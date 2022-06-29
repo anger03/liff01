@@ -22,7 +22,7 @@
 
 <script>
 window.onload = function() {
-  initializeLiff('https://liff.line.me/1657211276-YJ9z2oML');
+  initializeLiff('1657211276-YJ9z2oML');
   
 }
  const xurl = "https://script.google.com/macros/s/AKfycby2737be8d_0NVaglEGF_XwXA0_yNI5aLcOJ4JiVhrNwpvOCNvb/exec";
@@ -54,8 +54,8 @@ liff.closeWindow();
 function initializeLiff(myLiffId) {
     liff
         .init({
-            //liffId: myLiffId
-            liffId: 1657211276-YJ9z2oML
+            liffId: myLiffId
+           //liffId: 1657211276-YJ9z2oML
         })
         .then(() => {
             checks();
