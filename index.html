@@ -46,19 +46,30 @@ liff.closeWindow();
 
 
 function initializeLiff(myLiffId) {
-    liff.init({
+  //  liff.init({
                    liffId: myLiffId,
-       })
-       .then(() => {
-          checks();
-       })
-        .catch((err) => {
-       });
+   //    })
+   //    .then(() => {
+   //       checks();
+   //    })
+   //     .catch((err) => {
+  //     });
 
 
 // Using a callback
 //liff.init({ liffId: "1657365408-XxGNV6nA" }, successCallback, errorCallback); 
   
+  liff.init({ liffId: 'myLiffId' })
+  .then(async () => {
+    if (liff.isLoggedIn()) {
+      console.log(liff.getProfile());
+    } else {
+      liff.login();
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
   
   
   
