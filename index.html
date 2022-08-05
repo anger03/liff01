@@ -46,16 +46,40 @@ liff.closeWindow();
 
 
 function initializeLiff(myLiffId) {
-    liff.init({
-                    liffId: myLiffId,
-        })
-        .then(() => {
-            checks();
-        })
-        .catch((err) => {
-        });
+   // liff.init({
+     //               liffId: myLiffId,
+      //  })
+    //    .then(() => {
+   //         checks();
+   //     })
+  //      .catch((err) => {
+  //      });
+  
+  liff
+  .init({
+    liffId:  "1657365408-XxGNV6nA" // Use own liffId
+  })
+  .then(() => {
+    // Start to use liff's api
+  })
+  .catch((err) => {
+    // Error happens during initialization
+    console.log(err.code, err.message);
+  });
+
+// Using a callback
+liff.init({ liffId: "1657365408-XxGNV6nA" }, successCallback, errorCallback); 
+  
+  
+  
+  
 }
 
+  
+ 
+  
+  
+  
 var x = document.getElementById("demo");
 
 function getLocation() {
