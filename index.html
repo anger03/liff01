@@ -94,13 +94,15 @@ function showPosition(position) {
             var uid = profile.userId;
             var uname = profile.displayName;
             var xos = liff.getOS();
-       var  UpictureURL = profile.pictureURL;
+       var  Upicture = profile.pictureURL;
        
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
   "<br>userId: " + uid+ 
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
+       "<br>PIC U: " + Upicture ;
+       
 var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+UpictureURL;
         xmlhttp.open('GET', theUrl);
