@@ -12,7 +12,7 @@
   </head>
   <body>
     <center>
-    <h1>Check-In/Out Log V.0013</h1>
+    <h1>Check-In/Out Log V.0014</h1>
 <p>Click the button to check-in or check-out with your coordinates.</p>
 <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
@@ -136,7 +136,7 @@ function showPositionOut(position) {
             var uid = profile.userId;
             var uname = profile.displayName;
             var xos = liff.getOS();
-            var  Upic = profile.pictureUrl;
+            var  upic = profile.pictureUrl;
        
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
@@ -144,7 +144,7 @@ function showPositionOut(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+Upic;
+        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
