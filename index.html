@@ -46,11 +46,10 @@ liff.closeWindow();
 
 
 function initializeLiff(myLiffId) {
- 
-    liff.init({  
-         liffId: myLiffId 
-              
-              })
+    liff
+        .init({
+            liffId: myLiffId
+        })
         .then(() => {
             checks();
         })
