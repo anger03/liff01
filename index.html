@@ -44,9 +44,11 @@ liff.closeWindow();
             }
 }
 
-const myLiffId = "1657365408-XxGNV6nA" ;
+var myLiffId = "1657365408-XxGNV6nA" ;
 function initializeLiff(myLiffId) {
-    liff.init({ liffId: myLiffId })
+    liff.init({ liffId: myLiffId;
+              console.log(liffId)
+              })
         .then(() => {
             checks();
         })
