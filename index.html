@@ -60,9 +60,9 @@ liff.closeWindow();
   
   function initializeLiff() {
     liff.init({ liffId: '1657365408-XxGNV6nA' })
-  .then(async () => {
+  .then( () => {
     if (liff.isLoggedIn()) {
-      console.log(liff.getProfile());
+      checks();
     } else {
       liff.login();
     }
