@@ -72,7 +72,7 @@ function showPosition(position) {
             var uid = profile.userId;
             var uname = profile.displayName;
             var xos = liff.getOS();
-            var  Upic = profile.pictureUrl;
+            var  upic = profile.pictureUrl;
        
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
@@ -82,7 +82,7 @@ function showPosition(position) {
   
        
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+Upic;
+        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
