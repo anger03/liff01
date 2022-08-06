@@ -166,6 +166,15 @@ var xmlhttp = new XMLHttpRequest();
             var jsonResponse = JSON.parse(this.responseText);
         }
         alert(jsonResponse.desc);
+              
+              Swal.fire(
+  'Good job!',
+  '(jsonResponse.desc)',
+  'success'
+)
+              
+              
+              
         liff.closeWindow();
       }});  
 }
