@@ -49,7 +49,7 @@ var mm = today.getMinutes();
   title: 'Time '+hh+' : '+mm+ ' น.',
   text: 'ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-15.00',
   icon: "warning",
-  button: "OK",
+   button: "OK",
 });
               
               
@@ -134,8 +134,10 @@ var xmlhttp = new XMLHttpRequest();
               
                swal({
   title: 'displayName:'+ uname,
+                  html: upic   ,
   //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
   text: textresult01,
+                 
   icon: "success",
   button: "OK",
 });
