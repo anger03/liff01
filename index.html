@@ -115,6 +115,16 @@ function showPosition(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
   
+        swal({
+  title: 'displayName:'+ uname,
+  text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude ,
+  icon: "warning",
+  button: "OK",
+});
+       
+       
+       
+       
        
 var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
