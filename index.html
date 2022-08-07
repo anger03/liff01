@@ -187,12 +187,18 @@ var xmlhttp = new XMLHttpRequest();
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
         }
-        alert(jsonResponse.desc);
+       // alert(jsonResponse.desc);
               
-            
+             swal({
+  title: 'displayName:'+ uname,
+  //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
+  text: textresult01,
+  icon: "success",
+  button: "OK",
+});
               
               
-        liff.closeWindow();
+      //  liff.closeWindow();
       }});  
 }
 
