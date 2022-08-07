@@ -19,9 +19,13 @@
       <br>
     <h1>Check-In/Out Log V.0015</h1>
 <p>Click the button to check-in or check-out with your coordinates.</p>
+      <br>
+        <input id="files" type="file" capture="camera"   accept="image/*" onchange="loadFile(event)"   class="upload-box" placeholder="เลือกไฟล์ or ถ่ายรูป ที่จะทำการอัปโหลด" multiple  >
+      
 <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
-
+<br>
+      
 <p id="demo"></p>
 </center>
 
