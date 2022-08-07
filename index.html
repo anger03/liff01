@@ -115,12 +115,7 @@ function showPosition(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
   
-        swal({
-  title: 'displayName:'+ uname,
-  text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude ,
-  icon: "warning",
-  button: "OK",
-});
+       
        
        
        
@@ -135,6 +130,23 @@ var xmlhttp = new XMLHttpRequest();
             var jsonResponse = JSON.parse(this.responseText);
         }
         alert(jsonResponse.desc);
+             var textresult01 =  jsonResponse.desc;
+              
+               swal({
+  title: 'displayName:'+ uname,
+  //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
+  text:               textresult01,
+  icon: "warning",
+  button: "OK",
+});
+              
+              
+              
+              
+              
+              
+              
+              
         liff.closeWindow();
       }});  
 }
