@@ -196,6 +196,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
+            var textresult01 =  jsonResponse.desc;
         }
        // alert(jsonResponse.desc);
               
@@ -222,7 +223,7 @@ var xmlhttp = new XMLHttpRequest();
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   
-    
+  
   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
