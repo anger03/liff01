@@ -20,7 +20,7 @@
     <h1>Check-In/Out Log V.0015</h1>
 <p>Click the button to check-in or check-out with your coordinates.</p>
       <br>
-       <img id="pictureUrl">
+       <img id="pictureUrl" width="50" height="50">
       <br>
         <input id="files" type="file" capture="camera"   accept="image/*" onchange="loadFile(event)"   class="upload-box" placeholder="เลือกไฟล์ or ถ่ายรูป ที่จะทำการอัปโหลด" multiple  >
       
@@ -69,9 +69,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 13){
+        if(hh <= 12){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 14){
+        }else if(hh >= 13){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 //alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-15.00 "+hh+":"+mm);
@@ -116,9 +116,11 @@ var mm = today.getMinutes();
           getUserProfile()
           document.getElementById("btnLogIn").style.display = "none"
           document.getElementById("btnLogOut").style.display = "block"
+          checks();
         } else {
           document.getElementById("btnLogIn").style.display = "block"
           document.getElementById("btnLogOut").style.display = "none"
+          checks();
         }
       
       
