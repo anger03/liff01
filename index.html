@@ -20,12 +20,18 @@
     <h1>Check-In/Out Log V.0015</h1>
 <p>Click the button to check-in or check-out with your coordinates.</p>
       <br>
+       <img id="pictureUrl">
+      <br>
         <input id="files" type="file" capture="camera"   accept="image/*" onchange="loadFile(event)"   class="upload-box" placeholder="เลือกไฟล์ or ถ่ายรูป ที่จะทำการอัปโหลด" multiple  >
       
 <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
 <br>
       
+  <button id="btnLogIn" onclick="logIn()">Log In</button> 
+  <button id="btnLogOut" onclick="logOut()">Log Out</button>
+      
+<br>
 <p id="demo"></p>
 </center>
 
@@ -36,6 +42,26 @@ window.onload = function() {
  const xurl = 'https://script.google.com/macros/s/AKfycby2737be8d_0NVaglEGF_XwXA0_yNI5aLcOJ4JiVhrNwpvOCNvb/exec';
  
   
+  
+  
+  function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+    function logIn() {
+      liff.login({ redirectUri: window.location.href })
+    }
+    async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").style.display = "block"
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+    }
+  
+  
+  
+  
+  
+  
 function checks(){
 
 var today = new Date();
@@ -43,9 +69,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 14){
+        if(hh <= 13){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 17){
+        }else if(hh >= 14){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 //alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-15.00 "+hh+":"+mm);
@@ -80,10 +106,22 @@ var mm = today.getMinutes();
   function initializeLiff() {
     liff.init({ liffId: '1657365408-XxGNV6nA' })
   .then( () => {
-    if (liff.isLoggedIn()) {
-      checks();
+  //  if (liff.isLoggedIn())
+   if (liff.isInClient()) {
+      getUserProfile();
+      //checks();
     } else {
-      liff.login();
+      //liff.login();
+      if (liff.isLoggedIn()) {
+          getUserProfile()
+          document.getElementById("btnLogIn").style.display = "none"
+          document.getElementById("btnLogOut").style.display = "block"
+        } else {
+          document.getElementById("btnLogIn").style.display = "block"
+          document.getElementById("btnLogOut").style.display = "none"
+        }
+      
+      
     }
   })
   .catch((err) => {
@@ -92,6 +130,15 @@ var mm = today.getMinutes();
 }
   
  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
