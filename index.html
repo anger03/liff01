@@ -28,8 +28,8 @@
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
 <br>
       
-  <button id="btnLogIn" onclick="logIn()">Log In</button> 
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
+  <!---button id="btnLogIn" onclick="logIn()">Log In</button> 
+  <button id="btnLogOut" onclick="logOut()">Log Out</button---->
       
 <br>
 <p id="demo"></p>
@@ -106,21 +106,20 @@ var mm = today.getMinutes();
   function initializeLiff() {
     liff.init({ liffId: '1657365408-XxGNV6nA' })
   .then( () => {
-  //  if (liff.isLoggedIn())
-   if (liff.isInClient()) {
-      getUserProfile();
-      //checks();
+   if (liff.isLoggedIn()) {
+      //getUserProfile();
+      checks();
     } else {
-      //liff.login();
-      if (liff.isLoggedIn()) {
-          getUserProfile()
-          document.getElementById("btnLogIn").style.display = "none"
-          document.getElementById("btnLogOut").style.display = "block"
-          checks();
-        } else {
-          document.getElementById("btnLogIn").style.display = "block"
-          document.getElementById("btnLogOut").style.display = "none"
-          checks();
+      liff.login();
+      //if (liff.isLoggedIn()) {
+        //  getUserProfile()
+         // document.getElementById("btnLogIn").style.display = "none"
+        //  document.getElementById("btnLogOut").style.display = "block"
+        //  checks();
+      //  } else {
+      //    document.getElementById("btnLogIn").style.display = "block"
+      //    document.getElementById("btnLogOut").style.display = "none"
+       //   checks();
         }
       
       
