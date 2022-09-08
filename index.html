@@ -20,7 +20,7 @@
     <h1>Check-In/Out Log V.0015</h1>
 <p>Click the button to check-in or check-out with your coordinates.</p>
       <br>
-       <img id="pictureUrl" width="50" height="50">
+      
       <br>
         <input id="files" type="file" capture="camera"   accept="image/*" onchange="loadFile(event)"   class="upload-box" placeholder="เลือกไฟล์ or ถ่ายรูป ที่จะทำการอัปโหลด" multiple  >
       
@@ -31,6 +31,7 @@
   
       
 <br>
+<img id="pictureUrl" width="50" height="50">
 <p id="demo"></p>
 </center>
 
@@ -40,14 +41,6 @@ window.onload = function() {
 }
  const xurl = 'https://script.google.com/macros/s/AKfycby2737be8d_0NVaglEGF_XwXA0_yNI5aLcOJ4JiVhrNwpvOCNvb/exec';
  
-  
-  
-  
- 
-  
-  
-  
-  
   
   
 function checks(){
@@ -129,6 +122,9 @@ function showPosition(position) {
             var xos = liff.getOS();
             var  upic = profile.pictureUrl;
        
+       document.getElementById("pictureUrl").style.display = "block"
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+       
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
   "<br>userId: " + uid+ 
@@ -196,6 +192,9 @@ function showPositionOut(position) {
             var uname = profile.displayName;
             var xos = liff.getOS();
             var upic = profile.pictureUrl;
+       
+       document.getElementById("pictureUrl").style.display = "block"
+      document.getElementById("pictureUrl").src = profile.pictureUrl
        
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
