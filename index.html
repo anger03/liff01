@@ -428,11 +428,11 @@ function showPosition(position) {
        document.getElementById("pictureUrl").style.display = "block"
       document.getElementById("pictureUrl").src = profile.pictureUrl
        
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos;
+  //x.innerHTML = "Lat: " + position.coords.latitude + 
+ // "<br>Long: " + position.coords.longitude+ 
+ // "<br>userId: " + uid+ 
+//  "<br>displayName: " + uname+
+//  "<br>your OS: " + xos;
   
        
        
@@ -499,11 +499,11 @@ function showPositionOut(position) {
        document.getElementById("pictureUrl").style.display = "block"
       document.getElementById("pictureUrl").src = profile.pictureUrl
        
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos;
+ // x.innerHTML = "Lat: " + position.coords.latitude + 
+//  "<br>Long: " + position.coords.longitude+ 
+//  "<br>userId: " + uid+ 
+//  "<br>displayName: " + uname+
+//  "<br>your OS: " + xos;
        
 var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
