@@ -518,7 +518,10 @@ var xmlhttp = new XMLHttpRequest();
               
              swal({
   title: 'displayName:'+ uname,
-  text: profile.pictureUrl ,		     
+		     imageUrl: upic, 
+  imageWidth: 400,
+  imageHeight: 200,
+  	     
   //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
   text: textresult01,
   icon: "success",
