@@ -90,7 +90,7 @@
       const hh = today.getHours();
       const mm = today.getMinutes();
 
-      if (hh === 13) {
+      if (hh < 3) {
         document.getElementById("cin").classList.remove('invisible');
       } else if (hh >= 13 && hh < 15) {
         document.getElementById("cout").classList.remove('invisible');
