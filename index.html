@@ -343,12 +343,12 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 12){
+        if(hh <= 13){
           document.getElementById("cin").classList.remove('invisible');
           
           
           
-        }else if(hh >= 22){
+        }else if(hh >= 12){
           
           document.getElementById("cout").classList.remove('invisible');
           
