@@ -1,558 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-	   <style>
-	  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
-
-	 
-* {
-	box-sizing: border-box;
-}  
-
-body {
-	//background-color: #9b59b6;
-	font-family: 'Open Sans', sans-serif;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;  //ระยะห่างจาก กรอบด้านบน ส่วนboby
-	margin: 0;
-}
-.container {
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-	overflow: hidden;
-	width: 400px;
-	max-width: 100%;
-}
-
-.header {
-	border-bottom: 1px solid #f0f0f0;
-	background-color: #f7f7f7;
-	padding: 20px 40px;
-}
-
-.header h2 {
-	margin: 0;
-}
-
-.form {
-	padding: 30px 40px;	
-}
-
-.form-control {
-	margin-bottom: 10px;
-	padding-bottom: 20px;
-	position: relative;
-}
-
-.form-control label {
-	display: inline-block;
-	margin-bottom: 5px;
-}
-
-.form-control input {
-	border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-family: inherit;
-	font-size: 14px;
-	padding: 10px;
-	width: 100%;
-}
-
-.form-control input:focus {
-	outline: 0;
-	border-color: #5f5f5f;
-}
-
-.form-control.success input {
-	border-color: #2ecc71;
-}
-
-.form-control.error input {
-	border-color: #e74c3c;
-}
-
-.form-control i {
-	visibility: hidden;
-	position: absolute;
-	top: 40px;
-	right: 10px;
-}
-
-.form-control.success i.fa-check-circle {
-	color: #2ecc71;
-	visibility: visible;
-}
-
-.form-control.error i.fa-exclamation-circle {
-	color: #e74c3c;
-	visibility: visible;
-}
-
-.form-control small {
-	color: #e74c3c;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
-}
-
-.form-control.error small {
-	visibility: visible;
-}
-
-.form button {
-	background-color: #8e44ad;
-	border: 2px solid #8e44ad;
-	border-radius: 4px;
-	color: #fff;
-	display: block;
-	font-family: inherit;
-	font-size: 16px;
-	padding: 10px;
-	margin-top: 20px;
-	width: 100%;
-}
-
-
-
-
-
-
-
-
-
-/* SOCIAL PANEL CSS */
-.social-panel-container {
-	position: fixed;
-	right: 0;
-	bottom: 80px;
-	transform: translateX(100%);
-	transition: transform 0.4s ease-in-out;
-}
-
-.social-panel-container.visible {
-	transform: translateX(-10px);
-}
-
-.social-panel {	
-	background-color: #fff;
-	border-radius: 16px;
-	box-shadow: 0 16px 31px -17px rgba(0,31,97,0.6);
-	border: 5px solid #001F61;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-family: 'Muli';
-	position: relative;
-	height: 169px;	
-	width: 370px;
-	max-width: calc(100% - 10px);
-}
-
-.social-panel button.close-btn {
-	border: 0;
-	color: #97A5CE;
-	cursor: pointer;
-	font-size: 20px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-}
-
-.social-panel button.close-btn:focus {
-	outline: none;
-}
-
-.social-panel p {
-	background-color: #001F61;
-	border-radius: 0 0 10px 10px;
-	color: #fff;
-	font-size: 14px;
-	line-height: 18px;
-	padding: 2px 17px 6px;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin: 0;
-	transform: translateX(-50%);
-	text-align: center;
-	width: 235px;
-}
-
-.social-panel p i {
-	margin: 0 5px;
-}
-
-.social-panel p a {
-	color: #FF7500;
-	text-decoration: none;
-}
-
-.social-panel h4 {
-	margin: 20px 0;
-	color: #97A5CE;	
-	font-family: 'Muli';	
-	font-size: 14px;	
-	line-height: 18px;
-	text-transform: uppercase;
-}
-
-.social-panel ul {
-	display: flex;
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-.social-panel ul li {
-	margin: 0 10px;
-}
-
-.social-panel ul li a {
-	border: 1px solid #DCE1F2;
-	border-radius: 50%;
-	color: #001F61;
-	font-size: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 50px;
-	width: 50px;
-	text-decoration: none;
-}
-
-.social-panel ul li a:hover {
-	border-color: #FF6A00;
-	box-shadow: 0 9px 12px -9px #FF6A00;
-}
-
-.floating-btn {
-	border-radius: 26.5px;
-	background-color: #001F61;
-	border: 1px solid #001F61;
-	box-shadow: 0 16px 22px -17px #03153B;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	line-height: 20px;
-	padding: 12px 20px;
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	z-index: 999;
-}
-
-.floating-btn:hover {
-	background-color: #ffffff;
-	color: #001F61;
-}
-
-.floating-btn:focus {
-	outline: none;
-}
-
-.floating-text {
-	background-color: #001F61;
-	border-radius: 10px 10px 0 0;
-	color: #fff;
-	font-family: 'Muli';
-	padding: 7px 15px;
-	position: fixed;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	text-align: center;
-	z-index: 998;
-}
-
-.floating-text a {
-	color: #FF7500;
-	text-decoration: none;
-}
-
-@media screen and (max-width: 480px) {
-
-	.social-panel-container.visible {
-		transform: translateX(0px);
-	}
-	
-	.floating-btn {
-		right: 10px;
-	}
-}
-
-</style>
-  
-    
-    
-    <title>Check-In/Out Log V.00</title>
-  </head>
-  <body>
-    <center>
-      <br>
-      
-      <br>
-      
-      <br>
-    <h1>Check-In/Out Log V.0015</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .invisible { display: none; }
+  </style>
+  <title>Check-In/Out Log V.00</title>
+</head>
+<body>
+  <div class="container text-center">
+    <br>
+    <h1>Check-In/Out Log V.0016</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
-      <br>
-      <img id="pictureUrl" width="50" height="50">
-      <br>
-        <input id="files" type="file" capture="camera"   accept="image/*" onchange="loadFile(event)"   class="upload-box" placeholder="เลือกไฟล์ or ถ่ายรูป ที่จะทำการอัปโหลด" multiple  >
-      
-<div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
-<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
-<br>
-      
-  
-      
-<br>
+    <br>
+    <img id="pictureUrl" width="50" height="50" style="display: none;">
+    <input id="files" type="file" capture="camera" accept="image/*" onchange="loadFile(event)" class="upload-box">
+    <div id="cin" class="invisible">
+      <button type="button" class="btn btn-success" onclick="getLocation('cin')">Check-In</button>
+    </div>
+    <div id="cout" class="invisible">
+      <button type="button" class="btn btn-danger" onclick="getLocation('cout')">Check-Out</button>
+    </div>
+    <br>
+    <p id="demo"></p>
+  </div>
 
-<p id="demo"></p>
-</center>
+  <script src="https://static.line-scdn.net/liff/edge/2.21.0/sdk.js" onload="onLiffScriptLoad()" onerror="onLiffScriptError()"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const APP_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Update with your script ID
 
-<script>
-window.onload = function() {
-  initializeLiff('1657365408-XxGNV6nA'); 
-}
-// const xurl = 'https://script.google.com/macros/s/AKfycby2737be8d_0NVaglEGF_XwXA0_yNI5aLcOJ4JiVhrNwpvOCNvb/exec';
-
-	 const xurl = 'https://script.google.com/macros/s/AKfycbwT9K-oiFGUy17NI1652AIfePiIKvytpNYQqogiupkyyRbZjv_EFx6lULgZj3nQb6B1fw/exec';
- 
-  
- 
-  
-function checks(){
-
-var today = new Date();
-today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-var hh = today.getHours();
-var mm = today.getMinutes(); 
-
-        if(hh <= 13){
-          document.getElementById("cin").classList.remove('invisible');
-          
-          
-          
-        }else if(hh >= 12){
-          
-          document.getElementById("cout").classList.remove('invisible');
-          
-            }else{
-              
-              
-//alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-15.00 "+hh+":"+mm);
-              
-             
-  swal({
-  title: 'Time '+hh+' : '+mm+ ' น.',
-  text: 'ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-15.00',
-  icon: "warning",
-   button: "OK",
-});
-              
-              
-//liff.closeWindow();  
-            }
-}
-
-
-// function initializeLiff(myLiffId) {
-//     liff.init({
-//             liffId: myLiffId
-//         })
-//         .then(() => {
-//             checks();
-//         })
-//         .catch((err) => {
-//         });
-// }
-  
-  
-  
-  
-  
-  
-  
-  function initializeLiff() {
-    liff.init({ liffId: '1657365408-XxGNV6nA' })
-  .then( () => {
-   if (liff.isLoggedIn()) {
-         
-        checks();
-    } else {
-      liff.login();
-        
-      
+    function onLiffScriptLoad() {
+      console.log('LIFF SDK script loaded');
+      if (typeof liff !== 'undefined') {
+        initializeLiff('YOUR_LIFF_ID'); // Update with your LIFF ID
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
     }
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
-  
- 
-  
-  
 
-var x = document.getElementById("demo");
+    function onLiffScriptError() {
+      console.error('Failed to load LIFF SDK.');
+      Swal.fire({
+        title: 'Error',
+        text: 'Failed to load LIFF SDK.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+    function initializeLiff(liffId) {
+      liff.init({ liffId: liffId })
+        .then(() => {
+          if (liff.isLoggedIn()) {
+            checks();
+          } else {
+            liff.login();
+          }
+        })
+        .catch(err => {
+          console.error('LIFF initialization failed: ' + err.message);
+          Swal.fire({
+            title: 'Error',
+            text: 'Failed to initialize LIFF: ' + err.message,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        });
+    }
 
-function showPosition(position) {
+    function checks() {
+      const today = new Date();
+      const hh = today.getHours();
+      const mm = today.getMinutes();
 
-     liff.getProfile().then(function(profile) {
-            var uid = profile.userId;
-            var uname = profile.displayName;
-            var xos = liff.getOS();
-            var  upic = profile.pictureUrl;
-       
-       document.getElementById("pictureUrl").style.display = "block"
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-       
-  //x.innerHTML = "Lat: " + position.coords.latitude + 
- // "<br>Long: " + position.coords.longitude+ 
- // "<br>userId: " + uid+ 
-//  "<br>displayName: " + uname+
-//  "<br>your OS: " + xos;
-  
-       
-       
-       
-       
-       
-       
-var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
-        xmlhttp.open('GET', theUrl);
-        xmlhttp.send();
-            xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);
-        }
-       // alert(jsonResponse.desc);
-             var textresult01 =  jsonResponse.desc;
-              
-               swal({
-  title: 'displayName:'+ uname,
-  //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
-  imageUrl: upic, 
-  imageWidth: 400,
-  imageHeight: 200,
-  text: textresult01,
-                 
-  icon: "success",
-  button: "OK",
-});
-              
-              
-              
-              
-              
-              
-              
-              
-      //  liff.closeWindow();
-      }});  
-}
+      if (hh === 13) {
+        document.getElementById("cin").classList.remove('invisible');
+      } else if (hh >= 13 && hh < 15) {
+        document.getElementById("cout").classList.remove('invisible');
+      } else {
+        Swal.fire({
+          title: `Time ${hh} : ${mm}`,
+          text: 'You can only check-in/check-out between 13:00 and 15:00.',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        });
+      }
+    }
 
+    function getLocation(ctype) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          liff.getProfile().then(profile => {
+            const uid = profile.userId;
+            const name = profile.displayName;
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
 
-  
+            const url = `${APP_SCRIPT_URL}?lat=${lat}&long=${lon}&user=${uid}&name=${name}&xos=123456&ctype=${ctype}&action=true`;
 
-///////////////////////////////
+            fetch(url)
+              .then(response => response.json())
+              .then(data => Swal.fire(`${ctype === 'cin' ? 'Check-In' : 'Check-Out'} Status`, data.desc, 'success'))
+              .catch(err => {
+                console.error('Fetch error:', err);
+                Swal.fire({
+                  title: 'Error',
+                  text: `Failed to ${ctype === 'cin' ? 'check-in' : 'check-out'}: ` + err.message,
+                  icon: 'error',
+                  confirmButtonText: 'OK'
+                });
+              });
+          }).catch(err => {
+            console.error('Profile fetch failed: ' + err.message);
+            Swal.fire({
+              title: 'Error',
+              text: 'Failed to fetch profile: ' + err.message,
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          });
+        });
+      } else {
+        document.getElementById("demo").textContent = "Geolocation is not supported by this browser.";
+      }
+    }
 
-
-function getLocationOut() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPositionOut);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPositionOut(position) {
-
-     liff.getProfile().then(function(profile) {
-            var uid = profile.userId;
-            var uname = profile.displayName;
-            var xos = liff.getOS();
-            var upic = profile.pictureUrl;
-       
-       document.getElementById("pictureUrl").style.display = "block"
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-       
- // x.innerHTML = "Lat: " + position.coords.latitude + 
-//  "<br>Long: " + position.coords.longitude+ 
-//  "<br>userId: " + uid+ 
-//  "<br>displayName: " + uname+
-//  "<br>your OS: " + xos;
-       
-var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude+"&pictureURL02="+upic;
-        xmlhttp.open('GET', theUrl);
-        xmlhttp.send();
-            xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);
-            var textresult01 =  jsonResponse.desc;
-        }
-       // alert(jsonResponse.desc);
-              
-             swal({
-  title: 'displayName:'+ upic,
-		      image: upic,
-  
-  imageWidth: 400,
-  imageHeight: 200,	     
-  //text: 'Lat: ' + position.coords.latitude + '<br>Long: ' + position.coords.longitude + ,
-  text: textresult01,
-  icon: "success",
-  button: "OK",
-});
-              
-              
-      //  liff.closeWindow();
-      }});  
-}
-
-
-
-</script>
-     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  
-  
-  
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-   </body>
+    function loadFile(event) {
+      const output = document.getElementById('pictureUrl');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.style.display = 'block';
+    }
+  </script>
+</body>
 </html>
-
