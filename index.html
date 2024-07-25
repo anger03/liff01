@@ -32,25 +32,25 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
 
-    window.onload = function() {
-  initializeLiff('2005918762-lPMOLge0');
-}
+//     window.onload = function() {
+//   initializeLiff('2005918762-lPMOLge0');
+// }
 
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
     // function onLiffScriptLoad() {
     //   console.log('LIFF SDK script loaded');
-    //   if (typeof liff !== 'undefined') {
-    //     initializeLiff('2005918762-lPMOLge0'); // Update with your LIFF ID
-    //   } else {
-    //     console.error('LIFF SDK is not loaded.');
-    //     Swal.fire({
-    //       title: 'Error',
-    //       text: 'LIFF SDK is not loaded.',
-    //       icon: 'error',
-    //       confirmButtonText: 'OK'
-    //     });
-    //   }
+      if (typeof liff !== 'undefined') {
+        initializeLiff('2005918762-lPMOLge0'); // Update with your LIFF ID
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
     // }
 
 
