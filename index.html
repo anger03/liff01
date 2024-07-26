@@ -101,48 +101,93 @@ var mm = today.getMinutes();
 
     
 
+    // function getLocation(ctype) {
+    //   if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //       liff.getProfile().then(profile => {
+    //         const uid = profile.userId;
+    //         const name = profile.displayName;
+    //         const lat = position.coords.latitude;
+    //         const lon = position.coords.longitude;
+    //         const url = `${APP_SCRIPT_URL}?lat=${lat}&long=${lon}&user=${uid}&name=${name}&xos=123456&ctype=${ctype}&action=true`;
+    //         fetch(url)
+    //           .then(response => response.json())
+    //           .then(data => Swal.fire(`${ctype === 'cin' ? 'Check-In' : 'Check-Out'} Status`, data.desc, 'success'))
+    //           .catch(err => {
+    //             console.error('Fetch error:', err);
+    //             Swal.fire({
+    //               title: 'Error',
+    //               text: `Failed to ${ctype === 'cin' ? 'check-in' : 'check-out'}: ` + err.message,
+    //               icon: 'error',
+    //               confirmButtonText: 'OK'
+    //             });
+    //           });
+    //       }).catch(err => {
+    //         console.error('Profile fetch failed: ' + err.message);
+    //         Swal.fire({
+    //           title: 'Error',
+    //           text: 'Failed to fetch profile: ' + err.message,
+    //           icon: 'error',
+    //           confirmButtonText: 'OK'
+    //         });
+    //       });
+    //     });
+    //   } else {
+    //     document.getElementById("demo").textContent = "Geolocation is not supported by this browser.";
+    //   }
+    // }
 
-    
-    
 
-    
     function getLocation(ctype) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          liff.getProfile().then(profile => {
-            const uid = profile.userId;
-            const name = profile.displayName;
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      liff.getProfile().then(profile => {
+        const uid = profile.userId;
+        const name = profile.displayName;
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
 
-            const url = `${APP_SCRIPT_URL}?lat=${lat}&long=${lon}&user=${uid}&name=${name}&xos=123456&ctype=${ctype}&action=true`;
+        console.log(`Latitude: ${lat}, Longitude: ${lon}`); // For debugging
 
-            fetch(url)
-              .then(response => response.json())
-              .then(data => Swal.fire(`${ctype === 'cin' ? 'Check-In' : 'Check-Out'} Status`, data.desc, 'success'))
-              .catch(err => {
-                console.error('Fetch error:', err);
-                Swal.fire({
-                  title: 'Error',
-                  text: `Failed to ${ctype === 'cin' ? 'check-in' : 'check-out'}: ` + err.message,
-                  icon: 'error',
-                  confirmButtonText: 'OK'
-                });
-              });
-          }).catch(err => {
-            console.error('Profile fetch failed: ' + err.message);
+        const url = `${APP_SCRIPT_URL}?lat=${lat}&long=${lon}&user=${uid}&name=${name}&xos=123456&ctype=${ctype}&action=true`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => Swal.fire(`${ctype === 'cin' ? 'Check-In' : 'Check-Out'} Status`, data.desc, 'success'))
+          .catch(err => {
+            console.error('Fetch error:', err);
             Swal.fire({
               title: 'Error',
-              text: 'Failed to fetch profile: ' + err.message,
+              text: `Failed to ${ctype === 'cin' ? 'check-in' : 'check-out'}: ` + err.message,
               icon: 'error',
               confirmButtonText: 'OK'
             });
           });
+      }).catch(err => {
+        console.error('Profile fetch failed: ' + err.message);
+        Swal.fire({
+          title: 'Error',
+          text: 'Failed to fetch profile: ' + err.message,
+          icon: 'error',
+          confirmButtonText: 'OK'
         });
-      } else {
-        document.getElementById("demo").textContent = "Geolocation is not supported by this browser.";
-      }
-    }
+      });
+    }, error => {
+      console.error('Geolocation error:', error.message);
+      Swal.fire({
+        title: 'Error',
+        text: 'Failed to get location: ' + error.message,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  } else {
+    document.getElementById("demo").textContent = "Geolocation is not supported by this browser.";
+  }
+}
+
+
+    
 
     function loadFile(event) {
       const output = document.getElementById('pictureUrl');
