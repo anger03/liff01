@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0025</h1>
+    <h1>Check-In/Out Log V.0026</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -56,7 +56,7 @@
 
 
    window.onload = function() {
-      if (typeof liff !== 'undefined') {
+      // if (typeof liff !== 'undefined') {
         liff.init({ liffId: '2005918762-lPMOLge0' })
           .then(() => {
             console.log('LIFF initialized');
@@ -75,15 +75,15 @@
               confirmButtonText: 'OK'
             });
           });
-      } else {
-        console.error('LIFF SDK is not loaded.');
-        Swal.fire({
-          title: 'Error',
-          text: 'LIFF SDK is not loaded.',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-      }
+      // } else {
+      //   console.error('LIFF SDK is not loaded.');
+      //   Swal.fire({
+      //     title: 'Error',
+      //     text: 'LIFF SDK is not loaded.',
+      //     icon: 'error',
+      //     confirmButtonText: 'OK'
+      //   });
+      // }
     }
     
 
