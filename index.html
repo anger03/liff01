@@ -54,34 +54,24 @@
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
 
- function checkGymApproval() {
-      return new Promise((resolve) => {
-        Swal.fire({
-          title: 'Approval Required',
-          text: 'Please get approval from the gym before logging in.',
-          icon: 'warning',
-          confirmButtonText: 'Got It',
-          preConfirm: () => {
-            // Simulate user granting approval (in a real scenario, this could involve an API call or other logic)
-            return true; // Simulate approval granted
-          }
-        }).then((result) => {
-          if (result.isConfirmed) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        });
-      });
-    }
-
     function initializeLiff(liffId) {
       if (typeof liff !== 'undefined') {
         liff.init({ liffId: liffId })
           .then(() => {
             console.log('LIFF initialized with ID:', liffId);
-            checkGymApproval().then((approved) => {
-              if (approved) {
+            
+            // Directly ask for approval
+            Swal.fire({
+              title: 'Approval Required',
+              text: 'Please get approval from the gym before logging in.',
+              icon: 'warning',
+              confirmButtonText: 'Got It',
+              preConfirm: () => {
+                // Simulate user granting approval (replace with actual logic if needed)
+                return true; // Simulate approval granted
+              }
+            }).then((result) => {
+              if (result.isConfirmed) {
                 if (!liff.isLoggedIn()) {
                   liff.login();
                 } else {
@@ -97,6 +87,7 @@
                 });
               }
             });
+
           })
           .catch((error) => {
             console.error('LIFF initialization failed:', error);
@@ -121,7 +112,6 @@
     window.onload = function() {
       initializeLiff('2005918762-lPMOLge0'); // Replace with your LIFF ID
     }
-
    
   
    
