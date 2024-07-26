@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0023</h1>
+    <h1>Check-In/Out Log V.0024</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -43,37 +43,46 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
 
-    window.onload = function() {
-  initializeLiff('2005918762-lPMOLge0');
-}
+//     window.onload = function() {
+//   initializeLiff('2005918762-lPMOLge0');
+// }
 
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
 
 
-    if (typeof liff !== 'undefined') {
-      liff.init({ liffId: '2005918762-lPMOLge0' }) // Update with your LIFF ID
-        .then(() => {
-          // Your LIFF initialization logic here
-          console.log('LIFF initialized with ID: 2005918762-lPMOLge0');
-        })
-        .catch((error) => {
-          console.error('LIFF initialization failed:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'LIFF initialization failed.',
-            icon: 'error',
-            confirmButtonText: 'OK'
+    window.onload = function() {
+      if (typeof liff !== 'undefined') {
+        liff.init({ liffId: '2005918762-lPMOLge0' }) // Update with your LIFF ID
+          .then(() => {
+            // Your LIFF initialization logic here
+            console.log('LIFF initialized with ID: 2005918762-lPMOLge0');
+            // Check if LIFF is logged in
+            if (!liff.isLoggedIn()) {
+              liff.login();
+            } else {
+              console.log('Already logged in');
+              // You can add additional logic here if needed
+            }
+          })
+          .catch((error) => {
+            console.error('LIFF initialization failed:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'LIFF initialization failed.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
           });
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
         });
-    } else {
-      console.error('LIFF SDK is not loaded.');
-      Swal.fire({
-        title: 'Error',
-        text: 'LIFF SDK is not loaded.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+      }
     }
 
     
