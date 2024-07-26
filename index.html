@@ -54,7 +54,39 @@
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
 
-   
+    function initializeLiff(liffId) {
+      if (typeof liff !== 'undefined') {
+        liff.init({ liffId })
+          .then(() => {
+            console.log('LIFF initialized with ID:', liffId);
+            
+            // Check if user is logged in
+            if (!liff.isLoggedIn()) {
+              console.log('User is not logged in. Proceeding to login.');
+              liff.login();
+            } else {
+              console.log('User is already logged in.');
+            }
+          })
+          .catch((error) => {
+            console.error('LIFF initialization failed:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'LIFF initialization failed: ' + error.message,
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          });
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    }
   
    
     
@@ -76,22 +108,22 @@
       // }
     // }
 
-    function initializeLiff(liffId) {
-      liff.init({ liffId })
-        .then(() => {
-          // Your LIFF initialization logic here
-          console.log('LIFF initialized with ID:', liffId);
-        })
-        .catch((error) => {
-          console.error('LIFF initialization failed:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'LIFF initialization failed.',
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
-        });
-    }
+    // function initializeLiff(liffId) {
+    //   liff.init({ liffId })
+    //     .then(() => {
+    //       // Your LIFF initialization logic here
+    //       console.log('LIFF initialized with ID:', liffId);
+    //     })
+    //     .catch((error) => {
+    //       console.error('LIFF initialization failed:', error);
+    //       Swal.fire({
+    //         title: 'Error',
+    //         text: 'LIFF initialization failed.',
+    //         icon: 'error',
+    //         confirmButtonText: 'OK'
+    //       });
+    //     });
+    // }
 
     // Load the LIFF SDK script
     // if (typeof liff === 'undefined') {
