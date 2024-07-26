@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0026</h1>
+    <h1>Check-In/Out Log V.0027</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -55,36 +55,81 @@
 
 
 
-   window.onload = function() {
-      // if (typeof liff !== 'undefined') {
-        liff.init({ liffId: '2005918762-lPMOLge0' })
+ 
+          function initializeLiff(liffId) {
+      if (typeof liff !== 'undefined') {
+        liff.init({ liffId: liffId })
           .then(() => {
-            console.log('LIFF initialized');
-            if (!liff.isLoggedIn()) {
-              liff.login();
-            } else {
-              console.log('Already logged in');
-            }
+            console.log('LIFF initialized with ID:', liffId);
+            checkGymApproval()
+              .then((approved) => {
+                if (approved) {
+                  if (!liff.isLoggedIn()) {
+                    liff.login();
+                  } else {
+                    console.log('Already logged in');
+                  }
+                } else {
+                  Swal.fire({
+                    title: 'Approval Required',
+                    text: 'You need approval from the gym before logging in.',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                  });
+                }
+              })
+              .catch((error) => {
+                console.error('Error checking gym approval:', error);
+                Swal.fire({
+                  title: 'Error',
+                  text: 'Failed to check gym approval.',
+                  icon: 'error',
+                  confirmButtonText: 'OK'
+                });
+              });
           })
           .catch((error) => {
             console.error('LIFF initialization failed:', error);
             Swal.fire({
               title: 'Error',
-              text: 'LIFF initialization failed: ' + error,
+              text: 'LIFF initialization failed.',
               icon: 'error',
               confirmButtonText: 'OK'
             });
           });
-      // } else {
-      //   console.error('LIFF SDK is not loaded.');
-      //   Swal.fire({
-      //     title: 'Error',
-      //     text: 'LIFF SDK is not loaded.',
-      //     icon: 'error',
-      //     confirmButtonText: 'OK'
-      //   });
-      // }
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
     }
+
+    // Function to check gym approval
+    function checkGymApproval() {
+      return new Promise((resolve, reject) => {
+        // Simulate an API call or approval check
+        // For example, use a simple confirm dialog for demonstration purposes
+        const userConfirmed = confirm('Have you received approval from the gym?');
+        if (userConfirmed) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+        // In a real-world scenario, you would replace this with an API call
+        // to your server to check for approval
+        // e.g., fetch('/api/check-approval').then(response => response.json()).then(data => resolve(data.approved)).catch(reject);
+      });
+    }
+
+    window.onload = function() {
+      initializeLiff('2005918762-lPMOLge0');
+    }
+     
+    
     
 
 
