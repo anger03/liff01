@@ -49,6 +49,51 @@
 
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
+
+
+
+     function onLiffScriptLoad() {
+      console.log('LIFF SDK script loaded');
+      if (typeof liff !== 'undefined') {
+        initializeLiff('2005918762-lPMOLge0'); // Update with your LIFF ID
+      } else {
+        console.error('LIFF SDK is not loaded.');
+        Swal.fire({
+          title: 'Error',
+          text: 'LIFF SDK is not loaded.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    }
+
+    function initializeLiff(liffId) {
+      liff.init({ liffId })
+        .then(() => {
+          // Your LIFF initialization logic here
+          console.log('LIFF initialized with ID:', liffId);
+        })
+        .catch((error) => {
+          console.error('LIFF initialization failed:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'LIFF initialization failed.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        });
+    }
+
+    // Load the LIFF SDK script
+    if (typeof liff === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://static.line-scdn.net/liff/edge/2.1/sdk.js';
+      script.onload = onLiffScriptLoad;
+      document.head.appendChild(script);
+    } else {
+      onLiffScriptLoad();
+    }
+
     // function onLiffScriptLoad() {
     //   console.log('LIFF SDK script loaded');
       // if (typeof liff !== 'undefined') {
@@ -93,25 +138,25 @@ liff.closeWindow();
     //   });
     // }
 
-    function initializeLiff(liffId) {
-      liff.init({ liffId: liffId })
-        .then(() => {
-          if (liff.isLoggedIn()) {
-            checks();
-          } else {
-            liff.login();
-          }
-        })
-        .catch(err => {
-          console.error('LIFF initialization failed: ' + err.message);
-          Swal.fire({
-            title: 'Error',
-            text: 'Failed to initialize LIFF: ' + err.message,
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
-        });
-    }
+    // function initializeLiff(liffId) {
+    //   liff.init({ liffId: liffId })
+    //     .then(() => {
+    //       if (liff.isLoggedIn()) {
+    //         checks();
+    //       } else {
+    //         liff.login();
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.error('LIFF initialization failed: ' + err.message);
+    //       Swal.fire({
+    //         title: 'Error',
+    //         text: 'Failed to initialize LIFF: ' + err.message,
+    //         icon: 'error',
+    //         confirmButtonText: 'OK'
+    //       });
+    //     });
+    // }
 
     // function checks() {
     //   const today = new Date();
