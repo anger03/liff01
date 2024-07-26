@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0028</h1>
+    <h1>Check-In/Out Log V.0029</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -54,39 +54,49 @@
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
 
+ function checkGymApproval() {
+      return new Promise((resolve) => {
+        Swal.fire({
+          title: 'Approval Required',
+          text: 'Please get approval from the gym before logging in.',
+          icon: 'warning',
+          confirmButtonText: 'Got It',
+          preConfirm: () => {
+            // Simulate user granting approval (in a real scenario, this could involve an API call or other logic)
+            return true; // Simulate approval granted
+          }
+        }).then((result) => {
+          if (result.isConfirmed) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      });
+    }
 
- 
-          function initializeLiff(liffId) {
+    function initializeLiff(liffId) {
       if (typeof liff !== 'undefined') {
         liff.init({ liffId: liffId })
           .then(() => {
             console.log('LIFF initialized with ID:', liffId);
-            checkGymApproval()
-              .then((approved) => {
-                if (approved) {
-                  if (!liff.isLoggedIn()) {
-                    liff.login();
-                  } else {
-                    console.log('Already logged in');
-                  }
+            checkGymApproval().then((approved) => {
+              if (approved) {
+                if (!liff.isLoggedIn()) {
+                  liff.login();
                 } else {
-                  Swal.fire({
-                    title: 'Approval Required',
-                    text: 'You need approval from the gym before logging in.',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                  });
+                  console.log('Already logged in');
                 }
-              })
-              .catch((error) => {
-                console.error('Error checking gym approval:', error);
+              } else {
+                console.log('User did not approve the login');
                 Swal.fire({
-                  title: 'Error',
-                  text: 'Failed to check gym approval.',
-                  icon: 'error',
+                  title: 'Approval Needed',
+                  text: 'You need to get approval from the gym to log in.',
+                  icon: 'info',
                   confirmButtonText: 'OK'
                 });
-              });
+              }
+            });
           })
           .catch((error) => {
             console.error('LIFF initialization failed:', error);
@@ -107,6 +117,10 @@
         });
       }
     }
+
+    // window.onload = function() {
+    //   initializeLiff('2005918762-lPMOLge0'); // Replace with your LIFF ID
+    // }
 
    
   
