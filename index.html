@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0020</h1>
+    <h1>Check-In/Out Log V.0021</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -115,9 +115,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 13){
+        if(hh <= 14){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 17){
+        }else if(hh >= 14){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
