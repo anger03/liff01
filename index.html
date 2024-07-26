@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0024</h1>
+    <h1>Check-In/Out Log V.0025</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -39,8 +39,12 @@
   </div>
 
 
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  
   <script>
 
 //     window.onload = function() {
@@ -51,25 +55,22 @@
 
 
 
-    window.onload = function() {
+   window.onload = function() {
       if (typeof liff !== 'undefined') {
-        liff.init({ liffId: '2005918762-lPMOLge0' }) // Update with your LIFF ID
+        liff.init({ liffId: '2005918762-lPMOLge0' })
           .then(() => {
-            // Your LIFF initialization logic here
-            console.log('LIFF initialized with ID: 2005918762-lPMOLge0');
-            // Check if LIFF is logged in
+            console.log('LIFF initialized');
             if (!liff.isLoggedIn()) {
               liff.login();
             } else {
               console.log('Already logged in');
-              // You can add additional logic here if needed
             }
           })
           .catch((error) => {
             console.error('LIFF initialization failed:', error);
             Swal.fire({
               title: 'Error',
-              text: 'LIFF initialization failed.',
+              text: 'LIFF initialization failed: ' + error,
               icon: 'error',
               confirmButtonText: 'OK'
             });
@@ -84,7 +85,6 @@
         });
       }
     }
-
     
 
 
@@ -164,55 +164,6 @@ liff.closeWindow();
     
 
     
-    // function onLiffScriptError() {
-    //   console.error('Failed to load LIFF SDK.');
-    //   Swal.fire({
-    //     title: 'Error',
-    //     text: 'Failed to load LIFF SDK.',
-    //     icon: 'error',
-    //     confirmButtonText: 'OK'
-    //   });
-    // }
-
-    // function initializeLiff(liffId) {
-    //   liff.init({ liffId: liffId })
-    //     .then(() => {
-    //       if (liff.isLoggedIn()) {
-    //         checks();
-    //       } else {
-    //         liff.login();
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.error('LIFF initialization failed: ' + err.message);
-    //       Swal.fire({
-    //         title: 'Error',
-    //         text: 'Failed to initialize LIFF: ' + err.message,
-    //         icon: 'error',
-    //         confirmButtonText: 'OK'
-    //       });
-    //     });
-    // }
-
-    // function checks() {
-    //   const today = new Date();
-    //   const hh = today.getHours();
-    //   const mm = today.getMinutes();
-
-    //   if (hh < 3) {
-    //     document.getElementById("cin").classList.remove('invisible');
-    //   } else if (hh >= 13 && hh < 15) {
-    //     document.getElementById("cout").classList.remove('invisible');
-    //   } else {
-    //     Swal.fire({
-    //       title: `Time ${hh} : ${mm}`,
-    //       text: 'You can only check-in/check-out between 13:00 and 15:00.',
-    //       icon: 'warning',
-    //       confirmButtonText: 'OK'
-    //     });
-    //   }
-    // }
-
     function getLocation(ctype) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
