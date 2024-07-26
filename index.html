@@ -76,22 +76,22 @@
       // }
     // }
 
-    // function initializeLiff(liffId) {
-    //   liff.init({ liffId })
-    //     .then(() => {
-    //       // Your LIFF initialization logic here
-    //       console.log('LIFF initialized with ID:', liffId);
-    //     })
-    //     .catch((error) => {
-    //       console.error('LIFF initialization failed:', error);
-    //       Swal.fire({
-    //         title: 'Error',
-    //         text: 'LIFF initialization failed.',
-    //         icon: 'error',
-    //         confirmButtonText: 'OK'
-    //       });
-    //     });
-    // }
+    function initializeLiff(liffId) {
+      liff.init({ liffId })
+        .then(() => {
+          // Your LIFF initialization logic here
+          console.log('LIFF initialized with ID:', liffId);
+        })
+        .catch((error) => {
+          console.error('LIFF initialization failed:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'LIFF initialization failed.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        });
+    }
 
     // Load the LIFF SDK script
     // if (typeof liff === 'undefined') {
