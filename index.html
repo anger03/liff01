@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0027</h1>
+    <h1>Check-In/Out Log V.0028</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -47,9 +47,9 @@
   
   <script>
 
-//     window.onload = function() {
-//   initializeLiff('2005918762-lPMOLge0');
-// }
+    window.onload = function() {
+  initializeLiff('2005918762-lPMOLge0');
+}
 
     const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuhWcE98FUEfacdB-2msdUemeHhvxBbmnIcxhrQNvVWDO_RNVTKlADv_SMeC7J1-e_/exec'; // Update with your script ID
 
@@ -108,32 +108,9 @@
       }
     }
 
-    // Function to check gym approval
-    function checkGymApproval() {
-      return new Promise((resolve, reject) => {
-        // Simulate an API call or approval check
-        // For example, use a simple confirm dialog for demonstration purposes
-        const userConfirmed = confirm('Have you received approval from the gym?');
-        if (userConfirmed) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-
-         window.onload = function() {
-      initializeLiff('2005918762-lPMOLge0');
-    }
-        
-        // In a real-world scenario, you would replace this with an API call
-        // to your server to check for approval
-        // e.g., fetch('/api/check-approval').then(response => response.json()).then(data => resolve(data.approved)).catch(reject);
-      });
-    }
-
-    window.onload = function() {
-      initializeLiff('2005918762-lPMOLge0');
-    }
-     
+   
+  
+   
     
     
 
