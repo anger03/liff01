@@ -25,10 +25,17 @@
 </head>
 <body>
   <div class="container text-center">
-    <br>
-    <h1>Check-In/Out Log V.0034</h1>
+       <br>
+    <h1>Time Attendance System</h1>
+    <h5>Check-In/Out Log V.0034</h5>
+
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
+        <div class="date-time">
+            <h2>Current Date: <span id="currentDate"></span></h2>
+            <h2>Time: <span id="currentTime" class="clock"></span></h2>
+        </div>
+
     <img id="pictureUrl" width="50" height="50" style="display: none;">
     <input id="files" type="file" capture="camera" accept="image/*" onchange="loadFile(event)" class="upload-box">
     <div id="cin" class="invisible">
@@ -42,7 +49,43 @@
   </div>
 
 
+         <script>
+        let checkInTime = null;
+        let checkOutTime = null;
 
+        function checkIn() {
+            checkInTime = new Date().toLocaleTimeString();
+            document.getElementById('checkInTime').textContent = checkInTime;
+            // Optionally, send this time to a server or database
+        }
+
+        function checkOut() {
+            if (checkInTime === null) {
+                alert('Please check in first.');
+                return;
+            }
+            checkOutTime = new Date().toLocaleTimeString();
+            document.getElementById('checkOutTime').textContent = checkOutTime;
+            // Optionally, send this time to a server or database
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', timeOptions);
+        }
+
+        setInterval(updateDateTime, 1000); // Update every second
+        updateDateTime(); // Initial call to set date and time immediately
+    </script>
+
+
+
+
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
