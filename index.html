@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0029</h1>
+    <h1>Check-In/Out Log V.0030</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -66,6 +66,8 @@ var mm = today.getMinutes();
 
          if(hh <= 13){
           document.getElementById("cin").classList.remove('invisible');
+            document.getElementById("cout").classList.remove('invisible');
+        
         }else if(hh >= 14){
            document.getElementById("cin").classList.remove('invisible');
            document.getElementById("cout").classList.remove('invisible');
