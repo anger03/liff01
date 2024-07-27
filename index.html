@@ -23,7 +23,7 @@
 <body>
   <div class="container text-center">
     <br>
-    <h1>Check-In/Out Log V.0033</h1>
+    <h1>Check-In/Out Log V.0034</h1>
     <p>Click the button to check-in or check-out with your coordinates.</p>
     <br>
     <img id="pictureUrl" width="50" height="50" style="display: none;">
@@ -204,16 +204,16 @@ function getLocation(ctype) {
         fetch(url)
           .then(response => response.json())
           .then(data => {
-            // if (data.desc === "You are more than 1 km away from any location.") {
-            //   Swal.fire({
-            //     title: 'Error',
-            //     text: data.desc,
-            //     icon: 'error',
-            //     confirmButtonText: 'OK'
-            //   });
-            // } else {
+            if (data.desc === "You are more than 1 km away from any location.") {
+              Swal.fire({
+                title: 'Error',
+                text: data.desc,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            } else {
               Swal.fire(`${ctype === 'cin' ? 'Check-In' : 'Check-Out'} Status`, data.desc, 'success');
-            // }
+            }
           })
           .catch(err => {
             console.error('Fetch error:', err);
